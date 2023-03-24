@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\TextEditorController;
 */
 
 Route::get('/', function () {
-    return view('email');
+    return redirect()->route('dashboard');
 });
 
 Route::middleware([

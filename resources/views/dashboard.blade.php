@@ -12,23 +12,30 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-                {{-- <div class="card card-outline">
-                    <div class="card-header">
-
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box" style="background: yellow">
+                        <div class="inner">
+                            <h3>25</h3>
+                            <p>Dosen</p>
+                        </div>
+                        <div class="icon float-right">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>550</h3>
+                            <p>Mahasiswa</p>
+                        </div>
+                        <div class="icon float-right">
+                            <i class="fas fa-users"></i>
+                        </div>
                     </div>
-                    <!-- /.card-body -->
-                </div> --}}
-                <!-- /.card -->
+                </div>
             </div>
-            <!-- /.col -->
-            </div>
-            <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
     </section>

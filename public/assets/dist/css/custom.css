@@ -17,19 +17,19 @@ body {
 }
 
 .card-outline {
-    border-top: 3px solid #a79d61!important;
+    border-top: 3px solid #406EAB!important;
 }
 
 .card-header a.h1:hover {
-    color: #a79d61!important;
+    color: #406EAB!important;
 }
 
 .btn.btn-primary {
-    background-color: #a79d61!important;
+    background-color: #406EAB!important;
 }
 
 .btn.btn-primary:focus {
-    border: #a79d61!important;
+    border: #406EAB!important;
 }
 
 .brand-link {
@@ -37,7 +37,7 @@ body {
 }
 
 .bg-blue {
-    background-color: #a79d61!important;
+    background-color: #406EAB!important;
     color: white;
 }
 
@@ -46,7 +46,7 @@ body {
 }
 
 .nav-link.active {
-    background-color: #a79d61!important;
+    background-color: #406EAB!important;
 }
 
 .nav-link.active-sub {
@@ -54,7 +54,7 @@ body {
 }
 
 .nav-link.active a:hover {
-    color: #a79d61!important;
+    color: #406EAB!important;
 }
 
 .btn-masuk {
@@ -247,11 +247,11 @@ ul[role='tablist']  .nav-link:hover {
     box-shadow: 0px 4px 26px 0px #6091babd;
     -webkit-box-shadow: 0px 4px 26px 0px #6091ba6b;
     -moz-box-shadow: 0px 4px 26px 0px #6091ba6b;
-    color: #a79d61!important;
+    color: #406EAB!important;
 }
 
 .content-header .btn-laporan .btn.btn-none {
-    color: #a79d61!important;
+    color: #406EAB!important;
 }
 
 .content-header .btn-laporan .btn.btn-none:hover {
@@ -267,7 +267,7 @@ ul[role='tablist']  .nav-link:hover {
 }
 
 .content-header .btn-laporan .btn.btn-none {
-    color: #a79d61!important;
+    color: #406EAB!important;
 }
 
 .content-header .btn-laporan .btn.btn-none:hover {
@@ -299,7 +299,7 @@ ul[role='tablist']  .nav-link:hover {
 }
 
 .select2-selection__choice{
-    background-color: #a79d61!important;
+    background-color: #406EAB!important;
 }
 
 table{
@@ -321,7 +321,7 @@ table{
 }
 
 .login-box .btn-siswa {
-    color: #a79d61!important;
+    color: #406EAB!important;
 }
 
 .login-box .btn-siswa:hover {
@@ -338,7 +338,7 @@ table{
 }
 
 .login-box .btn-pengelola {
-    color: #a79d61!important;
+    color: #406EAB!important;
 }
 
 .login-box .btn-pengelola:hover {
@@ -355,7 +355,7 @@ table{
 }
 
 .text-primary{
-    color: #a79d61!important;
+    color: #406EAB!important;
 }
 
 .gridjs-pages button {
@@ -383,12 +383,12 @@ table{
 }
 
 .dropdown-item.active{
-    background-color: #a79d61!important;
+    background-color: #406EAB!important;
     color: white !important;
 }
 
 .gridjs-currentPage{
-    background-color: #a79d61!important;
+    background-color: #406EAB!important;
     color: white !important;
 }
 
@@ -594,4 +594,46 @@ table{
     -webkit-mask-position: center;
     mask-position: center;
     background-color: #6C6C6C;
+}
+
+.section {
+    position: relative;
+    z-index: 1;
+}
+
+.login-form {
+    height: 100vh;
+    width: 100%;
+}
+
+.bg-login-page {
+    background-image: url("/assets/images/bg-login.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 290px;
+}
+
+.bg-login-page h4 {
+    font-weight: light;
+}
+
+.bg-login-page h2 {
+    font-weight: bold;
+}
+
+.btn-blue {
+    background-color: #406EAB !important;
+    border-color: #406EAB !important;
+    color: white !important;
+    font-weight: 500;
+}
+
+.border-blue {
+    border: 1px solid #406EAB !important;
 }

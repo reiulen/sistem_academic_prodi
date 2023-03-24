@@ -1,17 +1,17 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('dashboard') }}" class="brand-link d-flex align-items-center" style="gap: 7px">
-        <img src="{{ asset('assets/images/logo_clv.png') }}" alt=" Logo"
-            style="height: 40px; width: 40px; object-fit: cover" />
-        <div class="brand-text h4">CLV Premium</div>
+    <a href="{{ route('dashboard') }}" class="brand-link d-flex justify-content-center align-items-center">
+        <div class="brand-text text-center h5 align-middle">
+            SISTEM INFORMASI <br/> AKADEMIK PRODI
+        </div>
     </a>
 
     <!-- Sidebar -->
     <div
         class="sidebar os-host os-theme-light os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden os-host-scrollbar-vertical-hidden">
         <!-- Sidebar user panel -->
-        <div class="user-panel mt-3 pt-2 pb-2 mb-3 d-flex align-items-start" style="gap: 5px;">
+        <div class="user-panel mt-3 pt-4 pb-3 mb-3 d-flex align-items-start" style="gap: 5px;">
             <div class="image">
                 <img src="{{ Auth::user()->profile_photo_url }}" class="img-circle elevation-2"
                     style="width: 40px; height: 40px; object-fit: cover;" alt="User Image" />
@@ -61,7 +61,7 @@
                 role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
-                <li class="nav-header">MENU UTAMA</li>
+                <li class="nav-header">Database</li>
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link {{ set_active(['dashboard']) }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -71,9 +71,9 @@
                 <li
                     class="nav-item nav-item {{ set_menu_open(['blog.artikel.index']) }}">
                     <a href="#" class="nav-link {{ set_active(['blog.artikel.index']) }}">
-                        <i class="fas fa-book nav-icon"></i>
+                        <i class="fas fa-save nav-icon"></i>
                         <p>
-                            {{ __('Blog') }}
+                            {{ __('Master') }}
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -81,127 +81,72 @@
                         <li class="nav-item">
                             <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Artikel') }}</p>
+                                <p>{{ __('Tahun Akademik') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Dosen') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Mahasiswa') }}</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li
-                    class="nav-item nav-item {{ set_menu_open(['page.type_page.index', 'page.halaman.index']) }}">
-                    <a href="#" class="nav-link {{ set_active(['page.type_page.index', 'page.halaman.index']) }}">
-                        <i class="fas fa-book nav-icon"></i>
+                    class="nav-item nav-item {{ set_menu_open(['blog.artikel.index']) }}">
+                    <a href="#" class="nav-link {{ set_active(['blog.artikel.index']) }}">
+                        <i class="fas fa-bookmark nav-icon"></i>
                         <p>
-                            {{ __('Halaman') }}
+                            {{ __('Akademik') }}
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('page.halaman.index') }}" class="nav-link {{ set_active_sub(['page.halaman.index']) }}">
+                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Halaman') }}</p>
+                                <p>{{ __('Seminar Skripsi') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('page.type_page.index') }}" class="nav-link {{ set_active_sub(['page.type_page.index']) }}">
+                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Tipe Halaman') }}</p>
+                                <p>{{ __('Skripsi') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Bimbingan') }}</p>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('facilities.index') }}" class="nav-link {{ set_active_sub(['facilities.index']) }}">
-                        <i class="fas fa-book nav-icon"></i>
-                        <p>{{ __('Fasilitas') }}</p>
-                    </a>
                 </li>
                 <li
-                    class="nav-item nav-item {{ set_menu_open(['icon.index', 'product.index']) }}">
-                    <a href="#" class="nav-link {{ set_active(['icon.index', 'product.index']) }}">
-                        <i class="fas fa-book nav-icon"></i>
+                    class="nav-item nav-item {{ set_menu_open(['blog.artikel.index']) }}">
+                    <a href="#" class="nav-link {{ set_active(['blog.artikel.index']) }}">
+                        <i class="fas fa-bookmark nav-icon"></i>
                         <p>
-                            {{ __('Produk') }}
+                            {{ __('Pengaturan') }}
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('product.index') }}" class="nav-link {{ set_active_sub(['product.index']) }}">
+                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Produk') }}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('icon.index') }}" class="nav-link {{ set_active_sub(['icon.index']) }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Icon') }}</p>
+                                <p>{{ __('Profil') }}</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('popup.index') }}" class="nav-link {{ set_active(['popup.index', 'popup.create']) }}">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>{{ __('Pop Up') }}</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('slider.index') }}" class="nav-link {{ set_active(['slider.index', 'slider.create']) }}">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>{{ __('Slider') }}</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('request-brosur.index') }}" class="nav-link {{ set_active(['request-brosur.index', 'request-brosur.create']) }}">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>{{ __('Request Brosur') }}</p>
-                    </a>
-                </li>
-                <li
-                    class="nav-item nav-item {{ set_menu_open(['setting.index', 'about-us.index', 'sosmed.index']) }}">
-                    <a href="#" class="nav-link {{ set_active(['setting.index', 'about-us.index', 'sosmed.index']) }}">
-                        <i class="nav-icon fas fa-cog"></i>
-                        <p>
-                            {{ __('Setting') }}
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ route('setting.index') }}" class="nav-link {{ set_active_sub(['setting.index']) }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('Default') }}</p>
-                                </a>
-                            </li>
-                        </li>
-                        <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ route('about-us.index') }}" class="nav-link {{ set_active_sub(['about-us.index']) }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('About Us') }}</p>
-                                </a>
-                            </li>
-                        </li>
-                        <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ route('counter-section.index') }}" class="nav-link {{ set_active_sub(['counter-section.index']) }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('Counter Section') }}</p>
-                                </a>
-                            </li>
-                        </li>
-                        <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ route('sosmed.index') }}" class="nav-link {{ set_active_sub(['sosmed.index']) }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('Sosmed') }}</p>
-                                </a>
-                            </li>
-                        </li>
-                    </ul>
-                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
