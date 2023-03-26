@@ -23,7 +23,7 @@
                         {{ Str::substr(Auth::user()->name, 0, 18) }}
                     </p>
                     <p class="level text-muted">
-                        Admin
+                        {{ nameRole(Auth::user()->role) }}
                     </p>
                 </a>
                 <div class="dropdown-menu bg-dark border-0 shadow-lg" aria-labelledby="dropdownMenuButton">
@@ -68,9 +68,10 @@
                         <p>{{ __('Dashboard') }}</p>
                     </a>
                 </li>
-                <li
-                    class="nav-item nav-item {{ set_menu_open(['blog.artikel.index']) }}">
-                    <a href="#" class="nav-link {{ set_active(['blog.artikel.index']) }}">
+                @if (Auth::user()->role == 1)
+                    <li
+                    class="nav-item nav-item {{ set_menu_open(['dosen.index', 'mahasiswa.index', 'tahun-akademik.index']) }}">
+                    <a href="#" class="nav-link {{ set_active(['dosen.index', 'mahasiswa.index', 'tahun-akademik.index']) }}">
                         <i class="fas fa-save nav-icon"></i>
                         <p>
                             {{ __('Master') }}
@@ -79,28 +80,29 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                            <a href="{{ route('tahun-akademik.index') }}" class="nav-link {{ set_active_sub(['tahun-akademik.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Tahun Akademik') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                            <a href="{{ route('dosen.index') }}" class="nav-link {{ set_active_sub(['dosen.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Dosen') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                            <a href="{{ route('mahasiswa.index') }}" class="nav-link {{ set_active_sub(['mahasiswa.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Mahasiswa') }}</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                @endif
                 <li
-                    class="nav-item nav-item {{ set_menu_open(['blog.artikel.index']) }}">
-                    <a href="#" class="nav-link {{ set_active(['blog.artikel.index']) }}">
+                    class="nav-item nav-item {{ set_menu_open(['seminar-skripsi.index', 'skripsi.index', 'bimbingan.index']) }}">
+                    <a href="#" class="nav-link {{ set_active(['seminar-skripsi.index', 'skripsi.index', 'bimbingan.index']) }}">
                         <i class="fas fa-bookmark nav-icon"></i>
                         <p>
                             {{ __('Akademik') }}
@@ -108,30 +110,34 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @if (Auth::user()->role != 2)
                         <li class="nav-item">
-                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                            <a href="{{ route('seminar-skripsi.index') }}" class="nav-link {{ set_active_sub(['seminar-skripsi.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Seminar Skripsi') }}</p>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item">
-                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                            <a href="{{ route('skripsi.index') }}" class="nav-link {{ set_active_sub(['skripsi.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Skripsi') }}</p>
                             </a>
                         </li>
+                        @if (Auth::user()->role != 3)
                         <li class="nav-item">
-                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                            <a href="{{ route('bimbingan.index') }}" class="nav-link {{ set_active_sub(['bimbingan.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Bimbingan') }}</p>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
                 <li
-                    class="nav-item nav-item {{ set_menu_open(['blog.artikel.index']) }}">
-                    <a href="#" class="nav-link {{ set_active(['blog.artikel.index']) }}">
-                        <i class="fas fa-bookmark nav-icon"></i>
+                    class="nav-item nav-item {{ set_menu_open([]) }}">
+                    <a href="#" class="nav-link {{ set_active([]) }}">
+                        <i class="fas fa-cog nav-icon"></i>
                         <p>
                             {{ __('Pengaturan') }}
                             <i class="fas fa-angle-left right"></i>
@@ -139,7 +145,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('blog.artikel.index') }}" class="nav-link {{ set_active_sub(['blog.artikel.index']) }}">
+                            <a href="" class="nav-link {{ set_active_sub([]) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Profil') }}</p>
                             </a>

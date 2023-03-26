@@ -34,7 +34,7 @@
                             <div class="form-group mb-4">
                                 <label><b>Username</b></label>
                                 <input
-                                    name="email"
+                                    name="username"
                                     class="form-control p-4 border-blue"
                                     placeholder="Masukan NIY/NIP/NIM"
                                     required

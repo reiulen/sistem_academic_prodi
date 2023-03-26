@@ -1,3 +1,4 @@
+$('.select2').select2({});
 $(".logout").click(function () {
     const nama = $(this).data("nama");
     Swal.fire({
@@ -19,11 +20,12 @@ $(".logout").click(function () {
     });
 });
 
-function hapus(id) {
-    data = $(`#hapus${id}`).attr("data");
+$('.deleteData').on('click', function() {
+    let name = $(this).data('name');
+    let id = $(this).data('id');
     Swal.fire({
         title: "Apakah yakin?",
-        text: `Data ${data} akan Dihapus`,
+        text: `Data ${name} akan Dihapus`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#6492b8da",
@@ -35,7 +37,11 @@ function hapus(id) {
             $(`#form-hapus${id}`).submit();
         }
     });
-}
+})
+
+$('.changeTA').on('change', function() {
+    $('#formChangeTH').trigger('submit');
+});
 
 function deleteDataTable(nama, urlTarget, table) {
     Swal.fire({

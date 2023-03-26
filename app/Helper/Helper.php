@@ -52,31 +52,49 @@ if (!function_exists('set_menu_open')) {
     }
 }
 
-if(!function_exists('upload_image')){
-    function upload_image($file, $path, $name, $width = null, $height = null){
+if(!function_exists('upload_file')){
+    function upload_file($file, $path, $name, $width = null, $height = null){
         $file = $file;
-        $filename = $name . time(). rand(1,9999) .'.' . $file->getClientOriginalExtension();
-        $destinationPath = 'uploads/images/' . $path;
-
-        if (!File::isDirectory($destinationPath)) {
-            File::makeDirectory($destinationPath, 0755, true, true);
-        }
-
-        $image  = Image::make($file);
-
-        if(isset($width) && isset($height)) {
-            $image->fit($width, $height, function($contraint){
-                $contraint->aspectRatio();
-            });
-        }
-
-        $image->resize($width ?? 850, $height, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-
-        $image->save($destinationPath . '/' . $filename);
-
+        $filename = str_replace(' ', '', $name) . time(). rand(1,9999) .'.' . $file->getClientOriginalExtension();
+        $destinationPath = 'uploads/file/' . $path;
+        $file->move($destinationPath, $filename);
         return $destinationPath . '/' . $filename;
     }
 }
+
+
+if(!function_exists('nameRole')){
+    function nameRole($role){
+        switch($role) {
+            case 1 :
+                $role = 'Admin';
+                break;
+            case 2 :
+                $role = 'Dosen';
+                break;
+            case 3 :
+                $role = 'Mahasiswa';
+                break;
+        }
+        return $role;
+    }
+}
+
+if(!function_exists('iconFile')){
+    function iconFile($file){
+        switch($file) {
+            case 'docx' :
+                $file = 'Admin';
+                break;
+            case 'pdf' :
+                $file = 'Dosen';
+                break;
+            case 'xls' :
+                $file = 'Mahasiswa';
+                break;
+        }
+        return $file;
+    }
+}
+
 

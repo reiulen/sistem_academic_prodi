@@ -9,6 +9,8 @@
     <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     @stack('css')
+    <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}" rel="stylesheet" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}" />
     <!-- Theme style -->
@@ -26,7 +28,6 @@
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
           <img class="animation__shake" src="{{ asset('assets/images/logo_clv.png') }}" alt="Logo CLV" height="100" width="100" style="object-fit: cover" />
-          <h1>{{ __('CLV Premium') }}</h1>
         </div>
         <x-navbar></x-navbar>
         <x-sidebar></x-sidebar>
@@ -43,6 +44,7 @@
     </div>
     <!-- ./wrapper -->
 
+    @include('lib.select2')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.0/axios.min.js"
 		integrity="sha512-yt+yearry6Evoodvr9oWzfGBYcXRyXAbJNZRyD7bHUHs39vj82vnRv1zCqzdh+bShT+c9IQ4T+uX3CmLofd4ig=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -58,24 +60,15 @@
 
     <!-- SweetAlert2 -->
     <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
     <script src="{{ asset('assets/dist/js/pages/global.js') }}"></script>
-    {{-- <script>
-        const navlink = $('.nav-link');
-        const navLinkChild = $('')
-        navlink.each(function(){
-            const href = $(this).attr('href');
-            if(href == window.location){
-                $(this).addClass('active');
-            }
-        });
-    </script> --}}
-    @if (session('pesan'))
+    @if (session('success'))
         <script>
           Swal.fire(
-          '{{ session('pesan') }}',
-          '{{ session('pesan1') }}',
+          'success',
+          '{{ session('success') }}',
           'success'
           );
         </script>
