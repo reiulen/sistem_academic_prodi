@@ -1,13 +1,12 @@
-<x-app-layout title="Tipe Halaman">
+<x-app-layout title="Tahun Akademik">
     <x-content_header>
         <div class="col-sm-6">
-            <h4 class="text-primary">Artikel</h4>
+            <h4 class="text-primary">Tahun Akademik</h4>
         </div>
 
         <x-breadcrumb>
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item">{{ __('Blog') }}</li>
-            <li class="breadcrumb-item item">{{ __('Artikel') }}</li>
+            <li class="breadcrumb-item item">{{ __('Tahun Akademik') }}</li>
         </x-breadcrumb>
     </x-content_header>
     <!-- Main content -->
