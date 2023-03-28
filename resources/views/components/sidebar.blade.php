@@ -152,7 +152,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('data-skripsi') }}" class="nav-link {{ set_active_sub(['data-skripsi', 'admin.index']) }}">
+                            <a href="{{ route('data-skripsi') }}" class="nav-link {{ set_active_sub(['data-skripsi']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Data Skripsi') }}</p>
                             </a>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -13,7 +15,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $data = User::where('role', 1)
+                     ->where('id', '!=', Auth::user()->id)
+                     ->latest()
+                     ->get();
+        return view('admin.index', compact('data'));
     }
 
     /**
@@ -23,7 +29,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create-update');
     }
 
     /**
@@ -34,7 +40,20 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required|unique:users',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|same:password',
+        ]);
+
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        $input['role'] = 1;
+        User::create($input);
+
+        return redirect(route('admin.index'))
+                    ->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -56,7 +75,9 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = User::where('role', 1)
+                      ->findOrFail($id);
+        return view('admin.create-update', compact('data'));
     }
 
     /**
@@ -68,7 +89,28 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = User::where('role', 1)
+                        ->findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required|unique:users,username,'.$id,
+        ]);
+
+        if($request->password || $request->password_confirmation)
+            $request->validate([
+                'password' => 'required|min:6',
+                'password_confirmation' => 'required|same:password',
+            ]);
+
+        $input = $request->all();
+        if($request->password)
+            $input['password'] = bcrypt($input['password']);
+        else
+            $input['password'] = $data->password;
+        $data->update($input);
+
+        return redirect(route('admin.index'))
+                    ->with('success', 'Data berhasil disimpan');
     }
 
     /**

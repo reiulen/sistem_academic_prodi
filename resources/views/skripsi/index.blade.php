@@ -51,8 +51,10 @@
                                     <td>{{ $item->dosen->nama  ?? '-'}}</td>
                                     @endif
                                     <td>
-                                       <a href="{{ route('detailBimbingan', $item->id) }}" class="btn btn-success px-4">
-                                            Lihat
+                                       <a href="{{ route('detailBimbingan', $item->id) }}"
+                                          class="btn btn-success px-4"
+                                          style="border-radius: 8px">
+                                            <i class="fas fa-eye pr-2"></i> Lihat
                                        </a>
                                     </td>
                                 </tr>
