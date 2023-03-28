@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Dosen;
 use Illuminate\Http\Request;
+use App\Models\SeminarSkripsi;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -16,8 +18,26 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $data = Dosen::latest()->get();
-        return view('dosen.index', compact('data'));
+        if(Auth::user()->role == 1) {
+            $data = Dosen::latest()->get();
+            return view('dosen.index', compact('data'));
+        }elseif(Auth::user()->role == 2) {
+            $user = Auth::user();
+            $data = SeminarSkripsi::with('mahasiswa', 'dosen');
+
+            if($user->role == 3)
+                $data = $data->where('mahasiswa_id', ($user->mahasiswa->id ?? 0));
+            elseif($user->role == 2)
+                $data = $data->where('dosen_id', ($user->dosen->id ?? 0));
+
+            $data = $data->where('status', 1)
+                        ->latest()
+                        ->get();
+
+            return view('skripsi.index', compact('data'));
+        }
+
+        return abort(404);
     }
 
     /**

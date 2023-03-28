@@ -70,10 +70,6 @@
             </div>
             <div class="col-lg-8 col-md-7 d-md-block d-none">
                 <div class="bg-login-page">
-                    <div>
-                        <h4>SELAMAT DATANG DI</h4>
-                        <h2 class="pt-2">SISTEM INFORMASI AKADEMIK PRODI</h2>
-                    </div>
                 </div>
             </div>
         </div>

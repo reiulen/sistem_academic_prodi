@@ -1,17 +1,18 @@
 <?php
 
+use App\Models\Dosen;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Models\TahunAkademik;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\BimbinganController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\TahunAkademikController;
 use App\Http\Controllers\SeminarSkripsiController;
-use App\Models\Dosen;
-use App\Models\Mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::middleware([
 
     Route::resource('/dosen', DosenController::class);
     Route::resource('/skripsi', SkripsiController::class);
+    Route::get('/data-skripsi',[ SkripsiController::class, 'dataSkripsi'])->name('data-skripsi');
     Route::get('/skripsi/{id}/kartu-bimbingan', [SkripsiController::class, 'detailBimbingan'])->name('detailBimbingan');
     Route::post('/skripsi/{id}/kartu-bimbingan', [SkripsiController::class, 'store'])->name('detailBimbingan.store');
     Route::delete('/skripsi/{detail_id}/kartu-bimbingan/{id}', [SkripsiController::class, 'destroy'])->name('detailBimbingan.destroy');
@@ -66,5 +68,6 @@ Route::middleware([
     Route::get('/bimbingan/export/data',[ BimbinganController::class, 'export'])->name('bimbingan.export');
     Route::resource('tahun-akademik', TahunAkademikController::class);
     Route::post('/tahun-akademik/dataTable', [TahunAkademikController::class, 'dataTable'])->name('tahun_akademik.dataTable');
+    Route::resource('/admin', AdminController::class);
 
 });

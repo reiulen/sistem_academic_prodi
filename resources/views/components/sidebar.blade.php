@@ -3,7 +3,9 @@
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link d-flex justify-content-center align-items-center">
         <div class="brand-text text-center h5 align-middle">
-            SISTEM INFORMASI <br/> AKADEMIK PRODI
+            <img src="{{ asset('assets/images/logo.png') }}"
+                style="height: 40px"
+                class="object-fit-cover mt-3"/>
         </div>
     </a>
 
@@ -68,8 +70,7 @@
                         <p>{{ __('Dashboard') }}</p>
                     </a>
                 </li>
-                @if (Auth::user()->role == 1)
-                    <li
+                <li
                     class="nav-item nav-item {{ set_menu_open(['dosen.index', 'mahasiswa.index', 'tahun-akademik.index']) }}">
                     <a href="#" class="nav-link {{ set_active(['dosen.index', 'mahasiswa.index', 'tahun-akademik.index']) }}">
                         <i class="fas fa-save nav-icon"></i>
@@ -79,27 +80,32 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @if (Auth::user()->role == 1)
                         <li class="nav-item">
                             <a href="{{ route('tahun-akademik.index') }}" class="nav-link {{ set_active_sub(['tahun-akademik.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Tahun Akademik') }}</p>
                             </a>
                         </li>
+                        @endif
+                        @if (Auth::user()->role == 2 || Auth::user()->role == 1)
                         <li class="nav-item">
                             <a href="{{ route('dosen.index') }}" class="nav-link {{ set_active_sub(['dosen.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Dosen') }}</p>
                             </a>
                         </li>
+                        @endif
+                        @if (Auth::user()->role == 3 || Auth::user()->role == 1)
                         <li class="nav-item">
                             <a href="{{ route('mahasiswa.index') }}" class="nav-link {{ set_active_sub(['mahasiswa.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Mahasiswa') }}</p>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
-                @endif
                 <li
                     class="nav-item nav-item {{ set_menu_open(['seminar-skripsi.index', 'skripsi.index', 'bimbingan.index']) }}">
                     <a href="#" class="nav-link {{ set_active(['seminar-skripsi.index', 'skripsi.index', 'bimbingan.index']) }}">
@@ -134,9 +140,10 @@
                         @endif
                     </ul>
                 </li>
+                @if(Auth::user()->role == 1)
                 <li
-                    class="nav-item nav-item {{ set_menu_open([]) }}">
-                    <a href="#" class="nav-link {{ set_active([]) }}">
+                    class="nav-item nav-item {{ set_menu_open(['data-skripsi', 'admin.index']) }}">
+                    <a href="#" class="nav-link {{ set_active(['data-skripsi', 'admin.index']) }}">
                         <i class="fas fa-cog nav-icon"></i>
                         <p>
                             {{ __('Pengaturan') }}
@@ -145,13 +152,20 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link {{ set_active_sub([]) }}">
+                            <a href="{{ route('data-skripsi') }}" class="nav-link {{ set_active_sub(['data-skripsi', 'admin.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Profil') }}</p>
+                                <p>{{ __('Data Skripsi') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.index') }}" class="nav-link {{ set_active_sub(['admin.index']) }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Admin') }}</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                @endif
 
             </ul>
         </nav>

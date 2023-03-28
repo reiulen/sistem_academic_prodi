@@ -16,13 +16,7 @@
             <div class="col-12">
                 <div class="card card-outline">
                     <div class="card-header">
-                        @if (Auth::user()->role == 2)
-                        <div class="mb-4">
-                            <h6>Nama : {{ Auth::user()->dosen->nama ?? '-' }}</h6>
-                            <h6>Rumpun : {{ Auth::user()->dosen->rumpun ?? '-' }}</h6>
-                        </div>
-                        @endif
-                        <h5 class="text-primary">Data Mahasiswa Bimbingan</h5>
+                        <h5 class="text-primary">Daftar Mahasiswa</h5>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -32,10 +26,8 @@
                                     <th width="10px">No</th>
                                     <th>Nama Mahasiswa</th>
                                     <th>Judul</th>
-                                    @if(Auth::user()->role == 2)
                                     <th>Pembimbing</th>
-                                    @endif
-                                    <th>Kartu Bimbingan</th>
+                                    <th>Rumpun</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,14 +39,8 @@
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $item->mahasiswa->nama ?? '-' }}</td>
                                     <td>{{ $item->judul ?? '-' }}</td>
-                                    @if(Auth::user()->role == 2)
-                                    <td>{{ $item->dosen->nama  ?? '-'}}</td>
-                                    @endif
-                                    <td>
-                                       <a href="{{ route('detailBimbingan', $item->id) }}" class="btn btn-success px-4">
-                                            Lihat
-                                       </a>
-                                    </td>
+                                    <td>{{ $item->dosen->nama ?? '-' }}</td>
+                                    <td>{{ $item->dosen->rumpun ?? '-' }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

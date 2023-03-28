@@ -23,7 +23,7 @@ class BimbinganController extends Controller
         $data = Bimbingan::with('dosen');
 
         if(Auth::user()->role == 2)
-            $data = $data->where('dosen_id', Auth::user()->dosen->id);
+            $data = $data->where('dosen_id', (Auth::user()->dosen->id ?? 0));
 
         $data = $data->latest()->get();
 
@@ -88,7 +88,7 @@ class BimbinganController extends Controller
         $data = new Bimbingan;
 
         if(Auth::user()->role == 2)
-            $data = $data->where('dosen_id', Auth::user()->dosen->id);
+            $data = $data->where('dosen_id', (Auth::user()->dosen->id ?? 0));
 
         $data = $data->findOrFail($id);
 

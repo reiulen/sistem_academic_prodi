@@ -27,7 +27,9 @@
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-          <img class="animation__shake" src="{{ asset('assets/images/logo_clv.png') }}" alt="Logo CLV" height="100" width="100" style="object-fit: cover" />
+          <img class="animation__shake" src="{{ asset('assets/images/logo.png') }}" alt="Logo SIP"
+                height="60"
+                style="object-fit: cover" />
         </div>
         <x-navbar></x-navbar>
         <x-sidebar></x-sidebar>

@@ -34,7 +34,11 @@ class SkripsiController extends Controller
                     ->latest()
                     ->get();
 
-        return view('skripsi.index', compact('data'));
+        if(Auth::user()->role == 1) {
+            return view('skripsi.index', compact('data'));
+        }else {
+            return view('skripsi.data_skripsi', compact('data'));
+        }
     }
 
     public function detailBimbingan(Request $request, $id)
@@ -195,6 +199,23 @@ class SkripsiController extends Controller
         return response(view('skripsi.export', compact('data', 'kartu_bimbingan')))
                     ->header('Content-Type', 'application/vnd-ms-excel')
                     ->header('Content-Disposition', 'attachment; filename="' . 'Kartu Bimbingan Skripsi ('.date('d F Y').').xls"');
+    }
+
+    public function dataSkripsi()
+    {
+        $user = Auth::user();
+        $data = SeminarSkripsi::with('mahasiswa', 'dosen');
+
+        if($user->role == 3)
+            $data = $data->where('mahasiswa_id', ($user->mahasiswa->id ?? 0));
+        elseif($user->role == 2)
+            $data = $data->where('dosen_id', ($user->dosen->id ?? 0));
+
+        $data = $data->where('status', 1)
+                    ->latest()
+                    ->get();
+
+        return view('skripsi.data_skripsi', compact('data'));
     }
 
 }
