@@ -8,11 +8,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\DataSKController;
 use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\BimbinganController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\TahunAkademikController;
 use App\Http\Controllers\SeminarSkripsiController;
+use App\Http\Controllers\TextEditorController;
+use App\Models\Pengumuman;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +43,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         $mahasiswa = Mahasiswa::select('id')->count();
         $dosen = Dosen::select('id')->count();
-        return view('dashboard', compact('mahasiswa', 'dosen'));
+        $pengumuman = Pengumuman::where('status', 1)
+                                  ->latest()
+                                  ->get();
+        return view('dashboard', compact('pengumuman','mahasiswa', 'dosen'));
     })->name('dashboard');
 
     Route::post('/changeTH', function(Request $request) {
@@ -69,5 +76,12 @@ Route::middleware([
     Route::resource('tahun-akademik', TahunAkademikController::class);
     Route::post('/tahun-akademik/dataTable', [TahunAkademikController::class, 'dataTable'])->name('tahun_akademik.dataTable');
     Route::resource('/admin', AdminController::class);
+    Route::get('/data-sk',[ DataSKController::class, 'index'])->name('data-sk.index');
+    Route::resource('/pengumuman', PengumumanController::class);
+
+    Route::group(['prefix' => 'textEditor'], function() {
+        Route::post('/uploadPhoto',  [TextEditorController::class, 'uploadPhoto'])->name('uploadPhoto');
+        Route::post('/deletePhoto',  [TextEditorController::class, 'deletePhoto'])->name('deletePhoto');
+    });
 
 });

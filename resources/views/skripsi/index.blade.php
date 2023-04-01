@@ -18,7 +18,7 @@
                     <div class="card-header">
                         @if (Auth::user()->role == 2)
                         <div class="mb-4">
-                            <h6>Nama : {{ Auth::user()->dosen->nama ?? '-' }}</h6>
+                            <h6>Nama : {{ Auth::user()->dosen->nama_dosen ?? '-' }}</h6>
                             <h6>Rumpun : {{ Auth::user()->dosen->rumpun ?? '-' }}</h6>
                         </div>
                         @endif
@@ -48,7 +48,7 @@
                                     <td>{{ $item->mahasiswa->nama ?? '-' }}</td>
                                     <td>{{ $item->judul ?? '-' }}</td>
                                     @if(Auth::user()->role == 2)
-                                    <td>{{ $item->dosen->nama  ?? '-'}}</td>
+                                    <td>{{ $item->dosen->nama_dosen  ?? '-'}}</td>
                                     @endif
                                     <td>
                                        <a href="{{ route('detailBimbingan', $item->id) }}"

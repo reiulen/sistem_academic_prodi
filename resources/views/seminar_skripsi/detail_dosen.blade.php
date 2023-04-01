@@ -27,7 +27,7 @@
                                                     <p style="font-size: 20px">{{ $item->rumpun }}</p>
                                                 </div>
                                                 <div style="padding-left: 25px">
-                                                    <p style="font-size: 18px" class="text-nowrap">Ketersediaan : 10</p>
+                                                    <p style="font-size: 18px" class="text-nowrap">Ketersediaan : {{ $item->SeminarSkripsi->where('status', 1)->count() }}</p>
                                                 </div>
                                             </div>
                                         </div>

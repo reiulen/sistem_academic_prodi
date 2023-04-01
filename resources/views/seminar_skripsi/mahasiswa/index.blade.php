@@ -47,12 +47,12 @@
                         <div class="card-body">
                             <h5 class="text-primary">Jadwal Seminar Proposal</h5>
                             <ol class="mt-3">
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                                <li></li>
+                                <li>Mahasiswa wajib menghubungi Dosen penguji dan membuat grup sesuai kelompok untuk menyesuaikan jadwal ujian.</li>
+                                <li>Mahasiswa wajib hadir pada saat jadwal ujian dilaksanakan.</li>
+                                <li>Bagi mahasiswa yang berhalangan hadir wajib mendaftar kembali pada pendaftaran semprop tahap berikutnya.</li>
+                                <li>Batas revisi setelah ujian semprop maksimal 2 minggu, lebih dari itu mengikuti ujian semprop kembali dengan mendaftar pada tahap berikutnya.</li>
+                                <li>SK pembimbing skripsi dibuat maksimal 1 mingu setelah ujian seminar proposal.</li>
+                                <li>Mahasiswa wajib mengirim SK dosen pembimbing sesuai nama dosen yang tercantum pada SK.</li>
                             </ol>
                         </div>
                         <!-- /.card-body -->

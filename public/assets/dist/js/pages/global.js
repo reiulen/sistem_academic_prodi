@@ -3,7 +3,7 @@ $(".logout").click(function () {
     const nama = $(this).data("nama");
     Swal.fire({
         title: "Apakah yakin?",
-        text: `Anda akan keluar dari Sistem ${nama}`,
+        text: `Anda akan keluar dari Sistem Sistem Informasi Prodi`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#6492b8da",

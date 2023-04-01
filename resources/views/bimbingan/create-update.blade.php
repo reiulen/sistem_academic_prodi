@@ -36,6 +36,17 @@
                         </div>
                         <div class="form-group row mb-3">
                             <div class="col-md-6">
+                                <label for="jumlah_mahasiswa">
+                                    Jumlah Mahasiswa
+                                </label>
+                                <input type="number"
+                                    name="jumlah_mahasiswa"
+                                    value="{{ old('jumlah_mahasiswa', ($data->jumlah_mahasiswa ?? '')) }}"
+                                    class="form-control @error('jumlah_mahasiswa') is-invalid @enderror" id="jumlah_mahasiswa">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <div class="col-md-6">
                                 <label for="topik">
                                    Topik
                                 </label>

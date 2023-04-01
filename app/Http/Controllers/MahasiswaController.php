@@ -22,7 +22,7 @@ class MahasiswaController extends Controller
         if(Auth::user()->role == 1) {
             $data = Mahasiswa::latest()->get();
             return view('mahasiswa.index', compact('data'));
-        }elseif(Auth::user()->role == 2) {
+        }else {
             $user = Auth::user();
             $data = SeminarSkripsi::with('mahasiswa', 'dosen');
 
@@ -61,7 +61,7 @@ class MahasiswaController extends Controller
     {
         $input = $request->all();
         $request->validate([
-            'nim' => 'required|unique:mahasiswas',
+            'nim' => 'required|unique:mahasiswas|unique:users,username',
             'nama' => 'required',
             'password' => 'required|min:6',
             'status' => 'required',
@@ -119,7 +119,7 @@ class MahasiswaController extends Controller
                         ->findOrFail($id);
 
         $request->validate([
-            'nim' => 'required|unique:mahasiswas,id,'.$id,
+            'nim' => 'required|unique:mahasiswas,id,'.$id . '|unique:users,mahasiswa,' . $data->user->id,
             'nama' => 'required',
             'status' => 'required',
         ]);

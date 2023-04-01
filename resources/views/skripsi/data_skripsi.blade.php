@@ -28,6 +28,9 @@
                                     <th>Judul</th>
                                     <th>Pembimbing</th>
                                     <th>Rumpun</th>
+                                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                    <th>Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,8 +42,15 @@
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $item->mahasiswa->nama ?? '-' }}</td>
                                     <td>{{ $item->judul ?? '-' }}</td>
-                                    <td>{{ $item->dosen->nama ?? '-' }}</td>
+                                    <td>{{ $item->dosen->nama_dosen ?? '-' }}</td>
                                     <td>{{ $item->dosen->rumpun ?? '-' }}</td>
+                                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                    <td>
+                                        <a href="{{ route('seminar-skripsi.edit', $item->id) }}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                    </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

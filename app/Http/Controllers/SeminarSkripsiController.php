@@ -125,7 +125,12 @@ class SeminarSkripsiController extends Controller
 
         $data->update($input);
 
-        return redirect(route('seminar-skripsi.index'))
+        if(Auth::user()->role == 2)
+            $route = route('skripsi.index');
+        else
+            $route = route('seminar-skripsi.index');
+
+        return redirect($route)
                 ->with('success', 'Data berhasil disimpan');
     }
 
@@ -146,7 +151,8 @@ class SeminarSkripsiController extends Controller
 
     public function detailDosen()
     {
-        $dosen = Dosen::orderBy('nama', 'ASC')->get();
+        $dosen = Dosen::with('SeminarSkripsi')
+                        ->orderBy('nama', 'ASC')->get();
         return view('seminar_skripsi.detail_dosen', compact('dosen'));
     }
 

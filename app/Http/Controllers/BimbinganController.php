@@ -54,6 +54,7 @@ class BimbinganController extends Controller
         $request->validate([
             'kelas' => 'required',
             'topik' => 'required',
+            'jumlah_mahasiswa' => 'required',
         ]);
 
         $input['dosen_id'] = Auth::user()->dosen->id ?? '-';
@@ -109,6 +110,7 @@ class BimbinganController extends Controller
          $request->validate([
             'kelas' => 'required',
             'topik' => 'required',
+            'jumlah_mahasiswa' => 'required',
         ]);
 
         $data->update($input);

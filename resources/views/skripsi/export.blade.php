@@ -57,7 +57,7 @@
 <div>
     <p>Nama : {{ $data->mahasiswa->nama ?? '-' }}</p>
     <p>NIM : {{ $data->mahasiswa->nim ?? '-' }}</p>
-    <p>Dosen Pembimbing : {{ $data->dosen->nama ?? '-' }}</p>
+    <p>Dosen Pembimbing : {{ $data->dosen->nama_dosen ?? '-' }}</p>
     <p>Judul : {{ $data->judul ?? '-' }}</p>
 </div>
 

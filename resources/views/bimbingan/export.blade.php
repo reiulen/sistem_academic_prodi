@@ -72,7 +72,7 @@
         @foreach ($data as $item)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $item->dosen->nama ?? '-' }}</td>
+            <td>{{ $item->dosen->name_dosen ?? '-' }}</td>
             <td>{{ $item->kelas }}</td>
             <td>{{ $item->topik }}</td>
             <td>{{ date('d F Y H:i:s', strtotime($item->created_at)) }}</td>

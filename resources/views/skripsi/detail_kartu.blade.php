@@ -1,7 +1,12 @@
 <x-app-layout title="Kartu Bimbingan Skripsi">
     <x-content_header>
         <div class="col-sm-6">
-            <a href="{{ route('skripsi.index') }}" class="btn btn-primary" style="border-radius: 8px">
+            @php
+                $route = 'skripsi.index';
+                if(Auth::user()->role == 2) $route = 'dosen.index';
+                else if(Auth::user()->role == 3) $route = 'mahasiswa.index';
+            @endphp
+            <a href="{{ route($route) }}" class="btn btn-primary" style="border-radius: 8px">
                 <i class="fas fa-arrow-left"></i> Kembali
             </a>
         </div>
@@ -23,7 +28,7 @@
                         <div class="mb-4">
                             <h6>Nama : {{ $data->mahasiswa->nama ?? '-' }}</h6>
                             <h6>NIM : {{ $data->mahasiswa->nim ?? '-' }}</h6>
-                            <h6>Dosen Pembimbing : {{ $data->dosen->nama ?? '-' }}</h6>
+                            <h6>Dosen Pembimbing : {{ $data->dosen->nama_dosen ?? '-' }}</h6>
                             <h6>Judul Skripsi : {{ $data->judul ?? '-' }}</h6>
                         </div>
                         {{-- @endif --}}

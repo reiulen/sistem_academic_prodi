@@ -60,7 +60,7 @@ class DosenController extends Controller
     {
         $input = $request->all();
         $request->validate([
-            'nip_niy' => 'required|unique:dosens',
+            'nip_niy' => 'required|unique:dosens|unique:users,username',
             'nama' => 'required',
             'password' => 'required|min:6',
             'rumpun' => 'required',
@@ -119,7 +119,7 @@ class DosenController extends Controller
         $data = Dosen::with('user')
                         ->findOrFail($id);
         $request->validate([
-            'nip_niy' => 'required|unique:dosens,id,' . $id,
+            'nip_niy' => 'required|unique:dosens,id,' . $id . '|unique:users,username,' . $data->user->id,
             'nama' => 'required',
             'rumpun' => 'required',
             'jabatan' => 'required',

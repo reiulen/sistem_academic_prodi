@@ -43,8 +43,16 @@ class SkripsiController extends Controller
 
     public function detailBimbingan(Request $request, $id)
     {
-        $data = SeminarSkripsi::with('kartuBimbingan', 'dosen', 'mahasiswa')
-                               ->findOrFail($id);
+        $user = Auth::user();
+        $data = SeminarSkripsi::with('kartuBimbingan', 'dosen', 'mahasiswa');
+        if($user->role == 3)
+            $data = $data->where('mahasiswa_id', ($user->mahasiswa->id ?? 0));
+        elseif($user->role == 2)
+            $data = $data->where('dosen_id', ($user->dosen->id ?? 0));
+
+        $data = $data->where('status', 1)
+                    ->findOrFail($id);
+
         $kartu_bimbingan = $data->kartuBimbingan ?? [];
         return view('skripsi.detail_kartu', compact('data', 'kartu_bimbingan'));
     }

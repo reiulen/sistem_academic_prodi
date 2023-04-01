@@ -26,7 +26,10 @@
         <div class="d-flex flex-wrap align-items-stretch">
             <div class="col-lg-4 col-md-5 min-vh-100">
                 <div class="p-5" style="margin-top: 150px">
-                    <x-jet-validation-errors class="mb-3 rounded-0" />
+                    {{-- <x-jet-validation-errors class="mb-3 rounded-0" /> --}}
+                    @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">Email dan password tidak ditemukan</div>
+                    @endif
                     <h6 class="text-left">Silahkan Login</h6>
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
@@ -62,7 +65,7 @@
                             </div>
                             <div class="mt-5 text-center">
                                 Apabila anda tidak memilik akun silahkan menghubungi <br/>
-                                <span class="text-red">staff laboratorium pbsi</span>
+                                <a href="https://api.whatsapp.com/send/?phone=081906793339" target="_blank" class="text-red">staff laboratorium pbsi</a>
                             </div>
                         </div>
                     </form>

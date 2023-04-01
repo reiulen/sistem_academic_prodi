@@ -71,8 +71,8 @@
                     </a>
                 </li>
                 <li
-                    class="nav-item nav-item {{ set_menu_open(['dosen.index', 'mahasiswa.index', 'tahun-akademik.index']) }}">
-                    <a href="#" class="nav-link {{ set_active(['dosen.index', 'mahasiswa.index', 'tahun-akademik.index']) }}">
+                    class="nav-item nav-item {{ set_menu_open(['dosen.index', 'mahasiswa.index', 'tahun-akademik.index', 'data-sk.index']) }}">
+                    <a href="#" class="nav-link {{ set_active(['dosen.index', 'mahasiswa.index', 'tahun-akademik.index', 'data-sk.index']) }}">
                         <i class="fas fa-save nav-icon"></i>
                         <p>
                             {{ __('Master') }}
@@ -92,7 +92,7 @@
                         <li class="nav-item">
                             <a href="{{ route('dosen.index') }}" class="nav-link {{ set_active_sub(['dosen.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Dosen') }}</p>
+                                <p>{{ Auth::user()->role == 2 ? __('Data Bimbingan') : __('Dosen') }}</p>
                             </a>
                         </li>
                         @endif
@@ -101,6 +101,14 @@
                             <a href="{{ route('mahasiswa.index') }}" class="nav-link {{ set_active_sub(['mahasiswa.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Mahasiswa') }}</p>
+                            </a>
+                        </li>
+                        @endif
+                        @if (Auth::user()->role == 2 || Auth::user()->role == 3)
+                        <li class="nav-item">
+                            <a href="{{ route('data-sk.index') }}" class="nav-link {{ set_active_sub(['data-sk.index']) }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Data SK') }}</p>
                             </a>
                         </li>
                         @endif
@@ -134,7 +142,7 @@
                         <li class="nav-item">
                             <a href="{{ route('bimbingan.index') }}" class="nav-link {{ set_active_sub(['bimbingan.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __('Bimbingan') }}</p>
+                                <p>{{ __('Bimbingan Kelas') }}</p>
                             </a>
                         </li>
                         @endif
@@ -142,8 +150,8 @@
                 </li>
                 @if(Auth::user()->role == 1)
                 <li
-                    class="nav-item nav-item {{ set_menu_open(['data-skripsi', 'admin.index']) }}">
-                    <a href="#" class="nav-link {{ set_active(['data-skripsi', 'admin.index']) }}">
+                    class="nav-item nav-item {{ set_menu_open(['data-skripsi', 'admin.index', 'pengumuman.index', 'pengumuman.show']) }}">
+                    <a href="#" class="nav-link {{ set_active(['data-skripsi', 'admin.index', 'pengumuman.index', 'pengumuman.show']) }}">
                         <i class="fas fa-cog nav-icon"></i>
                         <p>
                             {{ __('Pengaturan') }}
@@ -161,6 +169,12 @@
                             <a href="{{ route('admin.index') }}" class="nav-link {{ set_active_sub(['admin.index']) }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __('Admin') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('pengumuman.index') }}" class="nav-link {{ set_active_sub(['pengumuman.index', 'pengumuman.show']) }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>{{ __('Pengumuman') }}</p>
                             </a>
                         </li>
                     </ul>

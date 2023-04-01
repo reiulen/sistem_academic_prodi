@@ -29,7 +29,7 @@
                                    Nama Dosen
                                 </label>
                                @if(isset($data))
-                                <input value="{{ ($data->dosen->nip_niy ?? '') . ' - ' . ($data->dosen->nama ?? '') }}" class="form-control" disabled readonly />
+                                <input value="{{ ($data->dosen->nip_niy ?? '') . ' - ' . ($data->dosen->nama_dosen ?? '') }}" class="form-control" disabled readonly />
                                @else
                                <select class="form-select select2 col-12 @error('dosen_id') is-invalid @enderror"
                                         name="dosen_id" id="dosen_id">
@@ -115,7 +115,7 @@
                                 <label for="doc_proposal">
                                    Document Proposal
                                 </label>
-                                @if (Auth::user()->role == 1)
+                                @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                                 <div>
                                     <a href="{{ asset($data->doc_proposal) }}" class="inline-block" download>
                                         <img style="width: 65px"

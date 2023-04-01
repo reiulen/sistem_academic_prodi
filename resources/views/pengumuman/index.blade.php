@@ -1,12 +1,12 @@
-<x-app-layout title="Bimbingan Kelas">
+<x-app-layout title="Pengumuman">
     <x-content_header>
         <div class="col-sm-6">
-            <h4 class="text-primary">Bimbingan Kelas</h4>
+            <h4 class="text-primary">Pengumuman</h4>
         </div>
 
         <x-breadcrumb>
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item">{{ __('Bimbingan Kelas') }}</li>
+            <li class="breadcrumb-item">{{ __('Pengumuman') }}</li>
         </x-breadcrumb>
     </x-content_header>
     <!-- Main content -->
@@ -18,18 +18,9 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="d-md-flex">
-                                @if (Auth::user()->role == 2)
                                 <div>
-                                    <a class="btn btn-primary border-0" href="{{ route('bimbingan.create') }}"><i class="fa fa-plus px-1"></i> Tambah</a>
+                                    <a class="btn btn-primary border-0" href="{{ route('pengumuman.create') }}"><i class="fa fa-plus px-1"></i> Tambah</a>
                                 </div>
-                                @else
-                                <div class="">
-                                    <a href="{{ route('bimbingan.export') }}" class="btn btn-success border-0">
-                                        <i class="fa fa-file px-1"></i>
-                                        Export Data
-                                    </a>
-                                </div>
-                                @endif
                             </div>
                         </div>
                     </div>
@@ -39,14 +30,10 @@
                             <thead>
                                 <tr>
                                     <th width="10px">No</th>
-                                    <th>Nama Dosen</th>
-                                    <th>Kelas</th>
-                                    <th>Topik</th>
-                                    <th>Jumlah Mahasiswa</th>
-                                    <th>Tanggal</th>
-                                    @if (Auth::user()->role == 2)
+                                    <th>Judul</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
                                     <th>Action</th>
-                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,30 +43,41 @@
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-                                    <td>{{ $item->dosen->nama_dosen ?? '-' }}</td>
-                                    <td>{{ $item->kelas }}</td>
-                                    <td>{{ $item->topik }}</td>
-                                    <td>{{ $item->jumlah_mahasiswa }}</td>
-                                    <td>{{ date('d F Y H:i:s', strtotime($item->created_at)) }}</td>
-                                    @if (Auth::user()->role == 2)
-                                    <td>
-                                        <a href="{{ route('bimbingan.edit', $item->id) }}" class="btn btn-primary btn-sm">
+                                    <td class="align-middle">
+                                        <div class="d-flex align-items-center"
+                                            style="gap: 20px">
+                                           @if ($item->image)
+                                           <img src="{{ asset($item->image) }}"
+                                                class="img-thumbnail"
+                                                style="width: 120px" />
+                                           @endif
+                                            <div>
+                                                {{ $item->title }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">{{ $item->status == 1 ? 'Publish' : 'Draft' }}</td>
+                                    <td class="align-middle">{{ date('d F Y H:i:s', strtotime($item->created_at)) }}</td>
+                                    <td class="align-middle">
+                                        <a href="{{ route('pengumuman.edit', $item->id) }}" class="btn btn-primary btn-sm">
                                             <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="{{ route('pengumuman.show', $item->slug) }}" class="btn btn-success btn-sm">
+                                            <i class="fas fa-eye"></i>
                                         </a>
                                         <div
                                             role="button"
                                             class="btn btn-danger btn-sm deleteData"
-                                            data-name="{{ $item->nama_dosen }}"
+                                            data-name="{{ $item->nama }}"
                                             data-id="{{ $item->id }}"
                                             >
                                             <i class="fas fa-trash-alt text-white"></i>
                                         </div>
-                                        <form method="post" id="form-hapus{{ $item->id }}" action="{{ route('bimbingan.destroy', $item->id) }}">
+                                        <form method="post" id="form-hapus{{ $item->id }}" action="{{ route('pengumuman.destroy', $item->id) }}">
                                             @csrf
                                             @method('DELETE')
                                         </form>
                                     </td>
-                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>
