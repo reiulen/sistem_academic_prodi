@@ -61,6 +61,7 @@
             <th>Nama Dosen</th>
             <th>Kelas</th>
             <th>Topik</th>
+            <th>Jumlah Mahasiswa</th>
             <th>Tanggal</th>
         </tr>
     </thead>
@@ -75,6 +76,7 @@
             <td>{{ $item->dosen->name_dosen ?? '-' }}</td>
             <td>{{ $item->kelas }}</td>
             <td>{{ $item->topik }}</td>
+            <td>{{ $item->jumlah_mahasiswa }}</td>
             <td>{{ date('d F Y H:i:s', strtotime($item->created_at)) }}</td>
         </tr>
         @endforeach
