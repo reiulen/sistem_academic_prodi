@@ -119,7 +119,7 @@ class DosenController extends Controller
         $data = Dosen::with('user')
                         ->findOrFail($id);
         $request->validate([
-            'nip_niy' => 'required|unique:dosens,id,' . $id . '|unique:users,username,' . $data->user->id,
+            'nip_niy' => 'required|unique:dosens,id,' . $id . '|unique:users,username,' . $data->user->id ?? 0,
             'nama' => 'required',
             'rumpun' => 'required',
             'jabatan' => 'required',

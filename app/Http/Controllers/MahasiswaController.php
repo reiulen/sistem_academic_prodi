@@ -119,7 +119,7 @@ class MahasiswaController extends Controller
                         ->findOrFail($id);
 
         $request->validate([
-            'nim' => 'required|unique:mahasiswas,id,'.$id . '|unique:users,mahasiswa,' . $data->user->id,
+            'nim' => 'required|unique:mahasiswas,id,'.$id . '|unique:users,mahasiswa,' .  $data->user->id ?? 0,
             'nama' => 'required',
             'status' => 'required',
         ]);
